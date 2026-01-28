@@ -437,6 +437,11 @@ button:hover {
 }
 
 @media (min-width: 576px) {
+
+  body {
+    max-width: 500px;
+  }
+
   .grid {
     grid-template-columns: 1fr;
   }
@@ -462,9 +467,6 @@ button:hover {
     font-size: 0.6rem;
   }
 
-  #top {
-    max-width: 80px
-  }
 }
 
 @media (min-width: 768px) {
