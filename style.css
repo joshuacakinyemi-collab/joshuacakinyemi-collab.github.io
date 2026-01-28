@@ -444,6 +444,10 @@ button:hover {
   .spinner {
     max-width: 300px;
   }
+
+  #me {
+    max-width: 200px;
+  }
 }
 
 @media (min-width: 768px) {
@@ -454,6 +458,10 @@ button:hover {
   .spinner {
     max-width: 350px;
   }
+
+  #me {
+    max-width: 300px;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -462,6 +470,10 @@ button:hover {
   }
 
   .spinner {
+    max-width: 400px;
+  }
+
+  #me {
     max-width: 400px;
   }
 }
