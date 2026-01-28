@@ -438,9 +438,6 @@ button:hover {
 
 @media (min-width: 576px) {
 
-  body {
-    max-width: 500px;
-  }
 
   .grid {
     grid-template-columns: 1fr;
@@ -465,6 +462,14 @@ button:hover {
 
   #tiny {
     font-size: 0.6rem;
+  }
+
+  #top {
+    font-size: 0.8;
+  }
+
+  #stack {
+    grid-template-columns: 1fr 1fr;
   }
 
 }
