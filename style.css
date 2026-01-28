@@ -436,7 +436,7 @@ button:hover {
   }
 }
 
-@media (max-width: 576px) {
+@media (min-width: 576px) {
   .grid {
     grid-template-columns: 1fr;
   }
