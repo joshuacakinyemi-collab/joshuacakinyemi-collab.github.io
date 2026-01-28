@@ -436,17 +436,34 @@ button:hover {
   }
 }
 
-@media (min-width: 576px) {
+@media (max-width: 576px) {
   .grid {
     grid-template-columns: 1fr;
   }
 
   .spinner {
-    max-width: 300px;
+    max-width: 200px;
   }
 
   #me {
     max-width: 200px;
+  }
+
+  #buttons {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  #stick>a {
+    font-size: 0.8rem;
+  }
+
+  #tiny {
+    font-size: 0.6rem;
+  }
+
+  #top {
+    max-width: 80px
   }
 }
 
