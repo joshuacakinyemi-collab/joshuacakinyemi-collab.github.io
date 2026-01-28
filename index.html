@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css" />
+  <title>Joshua Akinyemi | Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <header id="here">
+    <a id="top" href="#section-a">JCA.DEV</a>
+
+    <nav id="stick">
+      <a class="goto" href="#home">HOME</a>
+      <a class="goto" href="#about">ABOUT</a>
+      <a class="goto" href="#projects">PROJECTS</a>
+      <a class="goto" href="#contact">CONTACT</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="home">
+      <h1> <span>J</span>oshua <span>C</span>aleb <span>A</span>kinyemi</h1>
+
+      <ul>
+        <li id="pom">[Backend Coding Developer]</li>
+        <li>To code you need to be creative, and to be creative you need to have imagination</li>
+      </ul>
+
+      <nav id="buttons">
+        <a class="goto" href="#projects">Check Out My Projects</a>
+        <a class="goto" href="#contact">Lets's Connect</a>
+      </nav>
+    </section>
+
+    <section id="about">
+      <h2>About Me</h2>
+      <img id="me" src="img/Marcy-422.jpg" alt="It's Me">
+
+      <ul>
+        <li class="story" id="pom">Born and raise from Staten Island, I'm a software engineer who want to code to
+          express creativity.
+          Before
+          joining The Marcy Lab School, I was
+          just trying to learn how to code.</li>
+        <li class="story" id="pom">I’m drawn to programming because of the kinds of art it can make. I'm passionate
+          about game
+          development and
+          love to build game applications. When I'm not coding, you can find
+          me playing games and making random 3D art</li>
+      </ul>
+
+      <h3>Tech Stack</h3>
+      <nav id="stack">
+        <a href="#0">JavaScript</a>
+        <a href="#0">Node.js</a>
+        <a href="#0">Git</a>
+        <a href="#0">Github</a>
+        <a href="#0">HTML5</a>
+        <a href="#0">CSS#</a>
+      </nav>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+
+      <div class="sidebar">
+        <h3>Finish project</h3>
+
+        <div class="grid">
+          <details id="portfolio" class="each">
+            <summary>Pesonal Portfolio</summary>
+            <p>My own portfolio that state who i am and list my project</p>
+            <p class="bold">Utilize: HTML5, CSS, Formspree</p>
+            <a class="link"
+              href="https://github.com/joshuacakinyemi-collab/joshuacakinyemi-collab.github.io#">---Github</a>
+          </details>
+
+          <details id="cli" class="each">
+            <summary>Triple-CLI-Project</summary>
+            <p>Three different Cli application using command-line task manager</p>
+            <p class="bold">Utilize: JavaScript</p>
+
+            <a class="link" href="https://github.com/joshuacakinyemi-collab/Triple-CLI-Project">---Github</a>
+          </details>
+        </div>
+
+        <ul id="nfin">
+          <li class="na">Nothing has been finished</li>
+        </ul>
+      </div>
+
+      <div class="sidebar">
+        <h3>Current project</h3>
+        <ul id="current">
+          <li class="project-card"></li>
+        </ul>
+
+        <ul id="ncurrent">
+          <li class="na">Nothing is currently being worked on</li>
+        </ul>
+      </div>
+
+      <div class="sidebar">
+        <h3>Planed project</h3>
+
+        <div class="grid">
+          <details id="sonic" class="each">
+            <summary>Sonic the hedgehog Fangame</summary>
+            <p>A 3D sonic fangame utilizing gameplay from the three main game era</p>
+            <p class="bold">Will Utilize: C++, Unreal</p>
+            <img class="spinner" src="img/Sonicmem.png" alt="Sonic Fangame">
+          </details>
+
+          <details id="twewy" class="each">
+            <summary>The world ends with you: Neo remix</summary>
+            <p>A remake of the 2007 game, recreated in 3D</p>
+            <p class="bold">Will Utilize: C++, Unreal</p>
+            <img class="spinner" src="img/twewyneo.png" alt="The world ends with you fangame">
+          </details>
+        </div>
+
+        <ul id="nplan">
+          <li class="na">Nothing is currently being planned</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="contact">
+      <form action="https://formspree.io/f/xwvozlgz" method="POST">
+        <h2>Contact</h2>
+
+        <h3>Wanna make something fun? Let's connect.</h3>
+
+        <div id="contact-grid">
+          <div id="namemail">
+            <div id="name">
+              <label for="name">NAME</label>
+              <input type="text" id="name" name="name" placeholder="Enter Name" required />
+            </div>
+
+            <div id="email">
+              <label for="email">EMAIL</label>
+              <input type="email" id="email" name="email" placeholder="Enter Email" required />
+            </div>
+          </div>
+
+          <div id="space">
+            <label for="message">MESSAGE</label>
+            <textarea name="message" id="message" rows="5" cols="35"
+              placeholder="Got anything to say to me."></textarea>
+          </div>
+        </div>
+
+        <button type="submit">Send Contact</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <div>
+      <a id="tiny" href="https://github.com/joshuacakinyemi-collab">⌘ Github</a></li>
+    </div>
+    <p>© 2026 Joshua Caleb Akinyemi // ALL SYSTEMS OPERATIONAL</p>
+  </footer>
+</body>
+
+</html>
