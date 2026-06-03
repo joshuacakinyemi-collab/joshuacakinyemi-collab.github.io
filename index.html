@@ -11,6 +11,8 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap"
     rel="stylesheet">
+  <script type="module" src="Project.js"></script>
+
 </head>
 
 <body>
@@ -26,9 +28,9 @@
   </header>
 
   <main>
-    <section id="home">
-      <h1> <span>J</span>oshua <span>C</span>aleb <span>A</span>kinyemi</h1>
 
+    <section id="home">
+      <h1><span>J</span>oshua <span>C</span>aleb <span>A</span>kinyemi</h1>
       <ul>
         <li id="pom">[Backend Coding Developer]</li>
         <li>To code you need to be creative, and to be creative you need to have imagination</li>
@@ -36,7 +38,7 @@
 
       <nav id="buttons">
         <a class="goto" href="#projects">Check Out My Projects</a>
-        <a class="goto" href="#contact">Lets's Connect</a>
+        <a class="goto" href="#contact">Let's Connect</a>
       </nav>
     </section>
 
@@ -45,16 +47,11 @@
       <img id="me" src="img/Marcy-422.jpg" alt="It's Me">
 
       <ul>
-        <li class="story" id="pom">Born and raise from Staten Island, I'm a software engineer who want to code to
-          express creativity.
-          Before
-          joining The Marcy Lab School, I was
-          just trying to learn how to code.</li>
-        <li class="story" id="pom">I’m drawn to programming because of the kinds of art it can make. I'm passionate
-          about game
-          development and
-          love to build game applications. When I'm not coding, you can find
-          me playing games and making random 3D art</li>
+        <li class="story" id="pom">Born and raised from Staten Island, I'm a software engineer who wants to code to
+          express creativity. Before joining The Marcy Lab School, I was just trying to learn how to code.</li>
+        <li class="story" id="pom">I'm drawn to programming because of the kinds of art it can make. I'm passionate
+          about game development and love to build game applications. When I'm not coding, you can find me playing
+          games and making random 3D art.</li>
       </ul>
 
       <h3>Tech Stack</h3>
@@ -64,49 +61,30 @@
         <a href="#0">Git</a>
         <a href="#0">Github</a>
         <a href="#0">HTML5</a>
-        <a href="#0">CSS#</a>
+        <a href="#0">CSS</a>
+        <a href="#0">React</a>
+        <a href="#0">SQL</a>
+        <a href="#0">PostgreSQL</a>
       </nav>
     </section>
 
     <section id="projects">
       <h2>Projects</h2>
+      <p class="wii-hint">Click a button to see project details</p>
 
+
+      <!-- Past Projects -->
       <div class="sidebar">
-        <h3>Finish project</h3>
-
-        <div class="grid">
-          <details id="poki-buddies" class="each">
-            <img src="https://chris-joshua-mls.github.io/mod-4-project/assets/Pok%C3%A9_Ball_icon.svg-B25Vjv1-.png"
-              alt="poki-buddies" class="icon">
-            <summary>Poki-Buddies</summary>
-            <p>A database showing pokemon data.</p>
-            <p class="bold">Utilize: HTML5, CSS, JavaScript, Vite</p>
-            <a class="link" href="https://github.com/Chris-Joshua-mls/mod-4-project#" target="_blank"
-              rel="noopener noreferrer">---Github</a>
-            <a class="link" href="https://chris-joshua-mls.github.io/mod-4-project/index.html#" target="_blank"
-              rel="noopener noreferrer">---Website</a>
-            <a class="link"
-              href="https://docs.google.com/presentation/d/1MCOgjTPmdV_wc5ffClV0qXhkc3JwY_rhRSjS90crJDs/edit?usp=sharing#"
-              target="_blank" rel="noopener noreferrer">---Presentation</a>
-          </details>
-
-          <details id="portfolio" class="each">
-            <summary>Pesonal Portfolio</summary>
-            <p>My own portfolio that state who i am and list my project</p>
-            <p class="bold">Utilize: HTML5, CSS, Formspree</p>
-            <a class="link" href="https://github.com/joshuacakinyemi-collab/joshuacakinyemi-collab.github.io# target="
-              _blank" rel="noopener noreferrer"">---Github</a>
-          </details>
-
-          <details id=" cli" class="each">
-              <summary>Triple-CLI-Project</summary>
-              <img src="https://avatars.githubusercontent.com/u/59704711?s=200&v=4" alt="Triplr-CLI" class="icon">
-              <p>Three different Cli application using command-line task manager</p>
-              <p class="bold">Utilize: JavaScript</p>
-
-              <a class="link" href="https://github.com/joshuacakinyemi-collab/Triple-CLI-Project#" target="_blank"
-                rel="noopener noreferrer">---Github</a>
-          </details>
+        <h3>Past Projects</h3>
+        <div class="wii-buttons">
+          <img class="wii-system-button" data-project="poki-buddies"
+            src="https://chris-joshua-mls.github.io/mod-4-project/assets/Pok%C3%A9_Ball_icon.svg-B25Vjv1-.png"
+            alt="Poki-Buddies" title="Poki-Buddies">
+          <img class="wii-system-button" data-project="portfolio" src="img/Marcy-422.jpg" alt="Personal Portfolio"
+            title="Personal Portfolio">
+          <img class="wii-system-button" data-project="cli"
+            src="https://avatars.githubusercontent.com/u/59704711?s=200&v=4" alt="Triple-CLI"
+            title="Triple-CLI-Project">
         </div>
 
         <ul id="nfin">
@@ -114,8 +92,16 @@
         </ul>
       </div>
 
+      <!-- New Projects -->
       <div class="sidebar">
-        <h3>Current project</h3>
+        <h3>New Projects</h3>
+        <div class="wii-buttons">
+          <img class="wii-system-button" data-project="playlist maker"
+            src="https://d1nhio0ox7pgb.cloudfront.net/_img/o_collection_png/green_dark_grey/256x256/plain/cd.png"
+            alt="Shady Music Maker" title="Shady Music Maker">
+          <img class="wii-system-button" data-project="Digital Arcade"
+            src="https://www.svgrepo.com/show/535360/d-pad.svg" alt="Digital Arcade" title="The Totally Retro Arcade">
+        </div>
         <ul id="current">
           <li class="project-card"></li>
         </ul>
@@ -125,29 +111,7 @@
         </ul>
       </div>
 
-      <div class="sidebar">
-        <h3>Planed project</h3>
 
-        <div class="grid">
-          <details id="sonic" class="each">
-            <summary>Sonic the hedgehog Fangame</summary>
-            <p>A 3D sonic fangame utilizing gameplay from the three main game era</p>
-            <p class="bold">Will Utilize: C++, Unreal</p>
-            <img class="spinner" src="img/Sonicmem.png" alt="Sonic Fangame">
-          </details>
-
-          <details id="twewy" class="each">
-            <summary>The world ends with you: Neo remix</summary>
-            <p>A remake of the 2007 game, recreated in 3D</p>
-            <p class="bold">Will Utilize: C++, Unreal</p>
-            <img class="spinner" src="img/twewyneo.png" alt="The world ends with you fangame">
-          </details>
-        </div>
-
-        <ul id="nplan">
-          <li class="na">Nothing is currently being planned</li>
-        </ul>
-      </div>
     </section>
 
     <section id="contact">
@@ -158,12 +122,11 @@
 
         <div id="contact-grid">
           <div id="namemail">
-            <div id="name">
+            <div id="name-field">
               <label for="name">NAME</label>
               <input type="text" id="name" name="name" placeholder="Enter Name" required />
             </div>
-
-            <div id="email">
+            <div id="email-field">
               <label for="email">EMAIL</label>
               <input type="email" id="email" name="email" placeholder="Enter Email" required />
             </div>
@@ -179,14 +142,17 @@
         <button type="submit">Send Contact</button>
       </form>
     </section>
+
   </main>
 
   <footer>
     <div>
-      <a id="tiny" href="https://github.com/joshuacakinyemi-collab">⌘ Github</a></li>
+      <a id="tiny" href="https://github.com/joshuacakinyemi-collab">⌘ Github</a>
     </div>
     <p id="tiny">© 2026 Joshua Caleb Akinyemi // ALL SYSTEMS OPERATIONAL</p>
   </footer>
+
+  <script src="script.js"></script>
 </body>
 
 </html>
