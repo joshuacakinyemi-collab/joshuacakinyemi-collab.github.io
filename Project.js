@@ -49,6 +49,16 @@ const projects = {
       { label: "Website", href: "https://joshuacakinyemi-collab.github.io/Arcade/index.html" }
     ],
   },
+  "ChainBase": {
+    title: "ChainBase",
+    img: "img/ChainBase.png",
+    description: "A platform that automates monthly USDC dividend payouts to verified recipients on Ethereum.",
+    tech: "React, FastAPI (Python), PostgreSQL, Solidity, Web3.py, APScheduler, Web3Auth",
+    links: [
+      { label: "Github", href: "https://github.com/Citizen-Dividend-ProjectHub/ChainBase" },
+      { label: "Presentation", href: "https://docs.google.com/presentation/d/1cS0VY_6CTQrWia__l87NA5hlH-lbLlFNMnBdBbjO1Co/edit?usp=sharing" },
+    ],
+  },
 };
 
 
