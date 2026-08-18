@@ -1,5 +1,4 @@
 const projects = {
-  // Past
   "poki-buddies": {
     title: "Poki-Buddies",
     img: "https://chris-joshua-mls.github.io/mod-4-project/assets/Pok%C3%A9_Ball_icon.svg-B25Vjv1-.png",
