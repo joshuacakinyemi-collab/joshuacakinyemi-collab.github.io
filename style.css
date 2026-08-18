@@ -29,18 +29,12 @@ img {
 :root {
   --color-text: #000000;
   --color-subtext: #444444;
-  --color-nav: #000000;
-  --color-box: #e8d8c9;
   --win-face: #c0c0c0;
-  --win-face-hover: #d4d0c8;
-  --win-face-dark: #808080;
   --win-face-darker: #404040;
-  --win-highlight: #ffffff;
   --win-titlebar: #0b6e4f;
   --win-titlebar-text: #ffffff;
   --win-desktop: #008080;
   --win-link: #00764a;
-  --win-link-visited: #551a8b;
   --win-glass-tint: rgba(31, 174, 130, 0.22);
   --win-glass-tint-soft: rgba(31, 174, 130, 0.14);
   --aero-btn: linear-gradient(180deg, #f6fdfb 0%, #d9efe6 45%, #bfe3d5 46%, #ddf3ea 100%);
@@ -268,7 +262,7 @@ section>*:not(h2) {
 /* ------------ Home -------------- */
 /* -------------------------------- */
 
-#pom {
+.pom {
   font-size: 1rem;
   gap: 10px;
   display: flex;
@@ -309,7 +303,7 @@ section>*:not(h2) {
   grid-template-columns: 1fr 1fr 1fr;
   height: 100%;
   gap: 8px;
-  color: var(--color-nav);
+  color: var(--color-text);
   background: linear-gradient(180deg, var(--win-glass-tint), rgba(255, 255, 255, 0.25));
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 8px;
@@ -369,70 +363,9 @@ section>*:not(h2) {
   color: var(--win-face-darker);
 }
 
-#nfin {
-  display: none;
-  gap: 10px;
-  padding: 10px;
-}
-
-
-#ncurrent {
-  gap: 10px;
-  padding: 10px;
-}
-
-#nplan {
-  display: none;
-  gap: 10px;
-  padding: 10px;
-}
-
-
-.bold {
-  font-weight: bold;
-}
-
-.grid {
-  display: grid;
-  gap: 10px;
-  justify-self: center;
-}
-
-.each {
-  gap: 10px;
-  max-width: 425px;
-  padding: 10px;
-}
-
 .link {
   text-decoration: none;
   font-weight: lighter;
-}
-
-summary:hover {
-  font-weight: bold;
-
-}
-
-.each[open] summary {
-  font-weight: bold;
-
-}
-
-.each:hover,
-.each[open] {
-  background: var(--win-face-hover);
-}
-
-.icon {
-  gap: 10px;
-  width: 200px;
-}
-
-.spinner {
-  gap: 10px;
-  width: 400px;
-  animation: spin 15s linear infinite;
 }
 
 .sidebar {
@@ -724,27 +657,13 @@ footer {
   padding: 10px;
 }
 
-#tiny {
+.tiny {
   text-decoration: none;
   color: #ffffff;
 }
 
-#tiny:hover {
+.tiny:hover {
   text-decoration: underline;
-}
-
-/* -------------------------------- */
-/* --------- Animations ----------- */
-/* -------------------------------- */
-
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
 }
 
 /* -------------------------------- */
@@ -752,16 +671,6 @@ footer {
 /* -------------------------------- */
 
 @media (max-width: 576px) {
-
-
-  .grid {
-    grid-template-columns: 1fr;
-  }
-
-  .spinner {
-    max-width: 200px;
-  }
-
   #me {
     max-width: 200px;
   }
@@ -775,7 +684,7 @@ footer {
     font-size: 0.8rem;
   }
 
-  #tiny {
+  .tiny {
     font-size: 0.6rem;
   }
 
@@ -798,31 +707,13 @@ footer {
 }
 
 @media (min-width: 768px) {
-  .grid {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .spinner {
-    max-width: 350px;
-  }
-
   #me {
     max-width: 300px;
   }
 }
 
 @media (min-width: 1024px) {
-  .grid {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-
-  .spinner {
-    max-width: 300px;
-  }
-
   #me {
     max-width: 400px;
   }
 }
-
-/* here for the fixes

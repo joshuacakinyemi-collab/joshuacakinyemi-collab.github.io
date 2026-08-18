@@ -7,18 +7,17 @@
   <link rel="stylesheet" href="style.css" />
   <title>Joshua Akinyemi | Portfolio</title>
   <script src="Project.js"></script>
-
 </head>
 
 <body>
   <header id="here">
-    <a id="top" href="#section-a">JCA.DEV</a>
+    <a id="top" href="#home">JCA.DEV</a>
 
     <nav id="stick">
-      <a class="goto" href="#home">HOME</a>
-      <a class="goto" href="#about">ABOUT</a>
-      <a class="goto" href="#projects">PROJECTS</a>
-      <a class="goto" href="#contact">CONTACT</a>
+      <a href="#home">HOME</a>
+      <a href="#about">ABOUT</a>
+      <a href="#projects">PROJECTS</a>
+      <a href="#contact">CONTACT</a>
     </nav>
   </header>
 
@@ -27,13 +26,13 @@
     <section id="home">
       <h1><span>J</span>oshua <span>C</span>aleb <span>A</span>kinyemi</h1>
       <ul>
-        <li id="pom">[Backend Coding Developer]</li>
+        <li class="pom">[Backend Coding Developer]</li>
         <li>To code you need to be creative, and to be creative you need to have imagination</li>
       </ul>
 
       <nav id="buttons">
-        <a class="goto" href="#projects">Check Out My Projects</a>
-        <a class="goto" href="#contact">Let's Connect</a>
+        <a href="#projects">Check Out My Projects</a>
+        <a href="#contact">Let's Connect</a>
       </nav>
     </section>
 
@@ -42,31 +41,36 @@
       <img id="me" src="img/Marcy-422.jpg" alt="It's Me">
 
       <ul>
-        <li class="story" id="pom">Born and raised from Staten Island, I'm a software engineer who wants to code to
+        <li class="story pom">Born and raised from Staten Island, I'm a software engineer who wants to code to
           express creativity. Before joining The Marcy Lab School, I was just trying to learn how to code.</li>
-        <li class="story" id="pom">I'm drawn to programming because of the kinds of art it can make. I'm passionate
+        <li class="story pom">I'm drawn to programming because of the kinds of art it can make. I'm passionate
           about game development and love to build game applications. When I'm not coding, you can find me playing
           games and making random 3D art.</li>
       </ul>
 
       <h3>Tech Stack</h3>
       <nav id="stack">
-        <a href="#0">JavaScript</a>
-        <a href="#0">Node.js</a>
-        <a href="#0">Git</a>
-        <a href="#0">Github</a>
-        <a href="#0">HTML5</a>
-        <a href="#0">CSS</a>
-        <a href="#0">React</a>
-        <a href="#0">SQL</a>
-        <a href="#0">PostgreSQL</a>
+        <a href="#">JavaScript</a>
+        <a href="#">Node.js</a>
+        <a href="#">Git</a>
+        <a href="#">Github</a>
+        <a href="#">HTML5</a>
+        <a href="#">CSS</a>
+        <a href="#">React</a>
+        <a href="#">SQL</a>
+        <a href="#">PostgreSQL</a>
+        <a href="#">Python</a>
+        <a href="#">FastAPI</a>
+        <a href="#">Solidity</a>
+        <a href="#">Web3.py</a>
+        <a href="#">Web3Auth</a>
+        <a href="#">APScheduler</a>
       </nav>
     </section>
 
     <section id="projects">
       <h2>Projects</h2>
       <p class="wii-hint">Click a button to see project details</p>
-
 
       <!-- Past Projects -->
       <div class="sidebar">
@@ -101,10 +105,6 @@
             <span class="wii-label">The Totally Retro Arcade</span>
           </div>
         </div>
-
-        <ul id="nfin">
-          <li class="na">Nothing has been finished</li>
-        </ul>
       </div>
 
       <!-- New Projects -->
@@ -117,16 +117,7 @@
             <span class="wii-label">ChainBase</span>
           </div>
         </div>
-        <ul id="current">
-          <li class="project-card"></li>
-        </ul>
-
-        <ul id="ncurrent">
-          <li class="na">Nothing is currently being worked on</li>
-        </ul>
       </div>
-
-
     </section>
 
     <section id="contact">
@@ -162,12 +153,10 @@
 
   <footer>
     <div>
-      <a id="tiny" href="https://github.com/joshuacakinyemi-collab">⌘ Github</a>
+      <a class="tiny" href="https://github.com/joshuacakinyemi-collab">⌘ Github</a>
     </div>
-    <p id="tiny">© 2026 Joshua Caleb Akinyemi // ALL SYSTEMS OPERATIONAL</p>
+    <p class="tiny">© 2026 Joshua Caleb Akinyemi // ALL SYSTEMS OPERATIONAL</p>
   </footer>
-
-
 </body>
 
 </html>
