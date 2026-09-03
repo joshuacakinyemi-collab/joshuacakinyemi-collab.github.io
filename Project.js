@@ -34,8 +34,8 @@ const projects = {
     description: "A place to create personalized playlists with music that you can share with other users",
     tech: "React, JS, CSS, HTML",
     links: [
-      { label: "Github", href: "https://github.com/The-Marcy-Lab-School-Assignments/full-stack-project-remix-joshuacakinyemi-collab/tree/main#" },
-      { label: "Website", href: "https://full-stack-project-remix-joshuacakinyemi.onrender.com/#" }
+      { label: "Github", href: "https://github.com/joshuacakinyemi-collab/playlistMaker/tree/main" },
+      { label: "Website", href: "https://yoshiyatunes.onrender.com/" }
     ],
   },
   "Digital Arcade": {
