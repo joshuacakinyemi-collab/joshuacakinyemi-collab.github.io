@@ -1,7 +1,7 @@
 const projects = {
   "poki-buddies": {
     title: "Poki-Buddies",
-    img: "https://chris-joshua-mls.github.io/mod-4-project/assets/Pok%C3%A9_Ball_icon.svg-B25Vjv1-.png",
+    img: "img/poki-buddies.png",
     description: "A database showing pokemon data.",
     tech: "HTML5, CSS, JavaScript, Vite",
     links: [
@@ -29,18 +29,17 @@ const projects = {
     ],
   },
   "playlist maker": {
-    title: "Shady Music Maker",
-    img: "https://d1nhio0ox7pgb.cloudfront.net/_img/o_collection_png/green_dark_grey/256x256/plain/cd.png",
-    description: "A place to create personalized playlists with music that you can share with other users",
-    tech: "React, JS, CSS, HTML",
+    title: "Music Playlist Maker — Desktop App",
+    img: "img/playlist-maker.png",
+    description: "A locally-run desktop app for creating and managing music playlists with YouTube search, playback controls, and shareable playlist codes — no server required.",
+    tech: "Electron, React, Vite, electron-store",
     links: [
-      { label: "Github", href: "https://github.com/joshuacakinyemi-collab/playlistMaker/tree/main" },
-      { label: "Website", href: "https://yoshiyatunes.onrender.com/" }
+      { label: "Github", href: "https://github.com/joshuacakinyemi-collab/Music-Playlist-Maker-Desktop-Application" },
     ],
   },
   "Digital Arcade": {
     title: "The Totally retro arcade",
-    img: "https://www.svgrepo.com/show/535360/d-pad.svg",
+    img: "img/digital-arcade.png",
     description: "A collection of arcade game, recreated in JavaScript.",
     tech: "HTML, CSS, JS",
     links: [
