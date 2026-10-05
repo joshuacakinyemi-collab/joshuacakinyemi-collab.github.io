@@ -270,7 +270,6 @@ section>*:not(h2) {
 }
 
 #buttons>a {
-  gap: 20px;
   text-decoration: none;
   padding: 8px 16px;
   color: var(--color-text);
@@ -671,6 +670,18 @@ footer {
 /* -------------------------------- */
 
 @media (max-width: 576px) {
+  header {
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 8px;
+  }
+
+  #stick {
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 4px 10px;
+  }
+
   #me {
     max-width: 200px;
   }
