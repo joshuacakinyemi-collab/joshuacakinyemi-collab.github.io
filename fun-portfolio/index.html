@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="Yoshiya.css" />
+  <title>Yoshiya | Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <script src="Project.js"></script>
+</head>
+
+<body>
+  <header id="here">
+    <a id="top" href="#home"><span>Y</span>our<span>P</span>al<span>Y</span>oshiya</a>
+    <nav id="stick">
+      <a class="goto" href="#home">HOME</a>
+      <a class="goto" href="#about">GALLERY</a>
+      <a class="goto" href="#projects">PROJECTS</a>
+      <a class="goto" href="#contact">CONTACT</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <section id="home">
+      <h1><span>Y</span>our<span>P</span>al<span>Y</span>oshiya</h1>
+      <ul>
+        <li id="pom">[Half-time Hobbyist]</li>
+        <li>To code you need to be creative, and to be creative you need to have imagination</li>
+      </ul>
+      <nav id="buttons">
+        <a class="goto" href="#projects">Check Out My Projects</a>
+        <a class="goto" href="#contact">Let's Connect</a>
+      </nav>
+    </section>
+
+    <section id="about">
+      <h2 id="Hobbies">
+        <span>Gallery</span>
+        <span class="win-controls" aria-hidden="true">
+          <button type="button" tabindex="-1">&#8211;</button>
+          <button type="button" tabindex="-1">&#9633;</button>
+          <button type="button" class="close" tabindex="-1">&#10005;</button>
+        </span>
+      </h2>
+
+      <div class="gallery" id="main-gallery">
+        <div class="gallery-track">
+          <img class="gallery-slide active" src="gallery/finalCD.png" alt="3D render of Sonic the Hedgehog in a desert">
+          <img class="gallery-slide" src="gallery/Sonicmem.png" alt="Sonic the Hedgehog CD cover art collage">
+          <img class="gallery-slide" src="gallery/SA_Frutiger_Final.webp" alt="Sonic Adventure style render, Frutiger Aero edit">
+          <img class="gallery-slide" src="gallery/Mania.webp" alt="Sonic Mania style render with geometric background">
+          <button type="button" class="gallery-arrow gallery-prev" aria-label="Previous image">&#10094;</button>
+          <button type="button" class="gallery-arrow gallery-next" aria-label="Next image">&#10095;</button>
+        </div>
+        <div class="gallery-dots">
+          <button type="button" class="gallery-dot active" data-slide="0" aria-label="Show slide 1"></button>
+          <button type="button" class="gallery-dot" data-slide="1" aria-label="Show slide 2"></button>
+          <button type="button" class="gallery-dot" data-slide="2" aria-label="Show slide 3"></button>
+          <button type="button" class="gallery-dot" data-slide="3" aria-label="Show slide 4"></button>
+        </div>
+      </div>
+
+      <h3>Hobbies</h3>
+      <nav id="stack">
+        <a href="#0" data-hobby="gaming">Gaming</a>
+        <a href="#0" data-hobby="video-editing">Video Editing</a>
+        <a href="#0" data-hobby="blender">Blender</a>
+        <a href="#0" data-hobby="coding">Coding</a>
+        <a href="#0" data-hobby="art">Art</a>
+        <a href="#0" data-hobby="music">Music (eventually)</a>
+      </nav>
+    </section>
+
+    <section id="projects">
+      <h2>
+        <span>Projects</span>
+        <span class="win-controls" aria-hidden="true">
+          <button type="button" tabindex="-1">&#8211;</button>
+          <button type="button" tabindex="-1">&#9633;</button>
+          <button type="button" class="close" tabindex="-1">&#10005;</button>
+        </span>
+      </h2>
+      <p class="wii-hint">Click a button to see project details</p>
+
+      <!-- Current Projects -->
+      <div class="sidebar">
+        <h3>Current Projects</h3>
+        <div class="wii-buttons">
+          <div class="wii-item">
+            <img class="wii-system-button" data-project="portfolio" src="img/Background.png" alt="Personal Portfolio"
+              title="Personal Portfolio">
+            <span class="wii-label">Personal Portfolio</span>
+          </div>
+          <div class="wii-item">
+            <img class="wii-system-button" data-project="yoshiyatunes"
+              src="https://d1nhio0ox7pgb.cloudfront.net/_img/o_collection_png/green_dark_grey/256x256/plain/cd.png"
+              alt="YoshiyaTunes" title="YoshiyaTunes">
+            <span class="wii-label">YoshiyaTunes</span>
+          </div>
+          <div class="wii-item">
+            <img class="wii-system-button" data-project="virtual-launcher" src="img/VirtualLauncher.png"
+              alt="Virtual Launcher" title="Virtual Launcher">
+            <span class="wii-label">Virtual Launcher</span>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Planned Projects -->
+      <div class="sidebar">
+        <h3>Planned Projects</h3>
+        <div class="wii-buttons">
+          <div class="wii-item">
+            <img class="wii-system-button" data-project="sonic" src="img/Sonicmem.png" alt="Sonic Fangame"
+              title="Sonic the Hedgehog Fangame">
+            <span class="wii-label">Sonic Fangame</span>
+          </div>
+          <div class="wii-item">
+            <img class="wii-system-button" data-project="twewy" src="img/twewyneo.png" alt="TWEWY Neo Remix"
+              title="The World Ends With You: Neo Remix">
+            <span class="wii-label">TWEWY Neo Remix</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section id="contact">
+      <form action="https://formspree.io/f/xwvozlgz" method="POST">
+        <h2>
+          <span>Contact</span>
+          <span class="win-controls" aria-hidden="true">
+            <button type="button" tabindex="-1">&#8211;</button>
+            <button type="button" tabindex="-1">&#9633;</button>
+            <button type="button" class="close" tabindex="-1">&#10005;</button>
+          </span>
+        </h2>
+        <h3>Wanna make something fun? Let's connect.</h3>
+
+        <div id="contact-grid">
+          <div id="namemail">
+            <div id="name-field">
+              <label for="name">NAME</label>
+              <input type="text" id="name" name="name" placeholder="Enter Name" required />
+            </div>
+            <div id="email-field">
+              <label for="email">EMAIL:</label>
+              <input type="email" id="email" name="email" placeholder="Enter Email" required />
+            </div>
+          </div>
+
+          <div id="space">
+            <label for="message">MESSAGE:</label>
+            <textarea name="message" id="message" rows="5" cols="35"
+              placeholder="Got anything to say to me."></textarea>
+          </div>
+        </div>
+
+        <button type="submit">Send Contact</button>
+      </form>
+    </section>
+
+  </main>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <div class="lightbox-backdrop"></div>
+    <div class="lightbox-content">
+      <button type="button" class="lightbox-close" aria-label="Close image">&#10005;</button>
+      <img class="lightbox-img" src="" alt="">
+    </div>
+  </div>
+
+  <footer>
+    <div>
+      <a class="tiny" href="https://www.youtube.com/@yinlin9811">▶ Youtube</a>
+    </div>
+    <p class="tiny">© 2026 Yoshiya Cool Zone // ALL SYSTEMS OPERATIONAL</p>
+  </footer>
+</body>
+
+</html>

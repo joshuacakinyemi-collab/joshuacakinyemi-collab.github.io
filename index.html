@@ -120,11 +120,9 @@
     </section>
 
     <section id="contact">
+      <h2>Contact</h2>
+      <h3>Wanna make something fun? Let's connect.</h3>
       <form action="https://formspree.io/f/xwvozlgz" method="POST">
-        <h2>Contact</h2>
-
-        <h3>Wanna make something fun? Let's connect.</h3>
-
         <div id="contact-grid">
           <div id="namemail">
             <div id="name-field">
@@ -154,8 +152,27 @@
     <div>
       <a class="tiny" href="https://github.com/joshuacakinyemi-collab">⌘ Github</a>
     </div>
+    <a id="fun-portfolio" class="tiny fun-link" target="_blank" rel="noopener noreferrer"
+      href="fun-portfolio/index.html">✦ My Fun Portfolio</a>
     <p class="tiny">© 2026 Joshua Caleb Akinyemi // ALL SYSTEMS OPERATIONAL</p>
   </footer>
+
+  <div id="fun-portfolio-modal" class="modal-overlay" hidden>
+    <div class="modal-window" role="dialog" aria-modal="true" aria-labelledby="fun-modal-title">
+      <h2 id="fun-modal-title">Leaving JCA.DEV</h2>
+      <div class="modal-body">
+        <div class="modal-message">
+          <span class="modal-icon" aria-hidden="true">i</span>
+          <p>Heads up — this link leads to my fun portfolio, where I share my art and game projects. It's more of
+            my non-professional work, separate from the projects above.</p>
+        </div>
+        <div class="modal-actions">
+          <button type="button" id="fun-modal-cancel">Cancel</button>
+          <button type="button" id="fun-modal-confirm">Continue</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 
 </html>

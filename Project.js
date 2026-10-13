@@ -128,6 +128,50 @@ function init() {
       togglePanel(sidebar, projectId)
     })
   })
+
+  const funLink = document.getElementById("fun-portfolio");
+  const funModal = document.getElementById("fun-portfolio-modal");
+  const funModalCancel = document.getElementById("fun-modal-cancel");
+  const funModalConfirm = document.getElementById("fun-modal-confirm");
+
+  if (funLink && funModal) {
+    const openModal = () => {
+      funModal.hidden = false;
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          funModal.classList.add("modal-open");
+          funModalCancel.focus();
+        });
+      });
+    };
+
+    const closeModal = () => {
+      funModal.classList.remove("modal-open");
+      funModal.addEventListener("transitionend", () => {
+        funModal.hidden = true;
+      }, { once: true });
+    };
+
+    funLink.addEventListener("click", (e) => {
+      e.preventDefault();
+      openModal();
+    });
+
+    funModalCancel.addEventListener("click", closeModal);
+
+    funModalConfirm.addEventListener("click", () => {
+      closeModal();
+      window.open(funLink.href, funLink.target || "_self", "noopener,noreferrer");
+    });
+
+    funModal.addEventListener("click", (e) => {
+      if (e.target === funModal) closeModal();
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && !funModal.hidden) closeModal();
+    });
+  }
 }
 
 document.addEventListener("DOMContentLoaded", init)
