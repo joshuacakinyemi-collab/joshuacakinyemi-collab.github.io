@@ -5,7 +5,7 @@ const projects = {
     description: "My own portfolio that states who I am and lists my projects.",
     tech: "HTML5, CSS, JavaScript, Formspree",
     links: [
-      { label: "Github", href: "https://github.com/joshuacakinyemi-collab/YourPalYoshiya.github.io#" },
+      { label: "Github", href: "https://github.com/joshuacakinyemi-collab/joshuacakinyemi-collab.github.io" },
     ],
   },
   "yoshiyatunes": {
@@ -68,51 +68,74 @@ function buildPanel(id) {
   return panel;
 }
 
+function closePanel(panel) {
+  panel.classList.remove("panel-open");
+  panel.addEventListener("transitionend", () => panel.remove(), { once: true });
+}
+
 function togglePanel(sidebar, projectId) {
   const existing = sidebar.querySelector(".project-panel");
+  const isOpenAlready = existing?.dataset.panelFor === projectId && existing.classList.contains("panel-open");
 
-  if (existing && existing.dataset.panelFor === projectId) {
-    existing.classList.remove("panel-open");
-    existing.addEventListener("transitionend", () => existing.remove(), { once: true });
+  sidebar.querySelectorAll(".wii-system-button.active").forEach(b => b.classList.remove("active"));
 
-    const btn = sidebar.querySelector(`.wii-system-button[data-project="${projectId}"]`);
-    if (btn) btn.classList.remove("active");
+  if (isOpenAlready) {
+    closePanel(existing);
     return;
   }
 
-  if (existing) {
-    existing.remove();
-    sidebar.querySelectorAll(".wii-system-button.active").forEach(b => b.classList.remove("active"));
-  }
+  existing?.remove();
 
   const panel = buildPanel(projectId);
   if (!panel) return;
 
   sidebar.appendChild(panel);
-
+  // Wait two frames so the browser paints the closed state before animating open
   requestAnimationFrame(() => {
     requestAnimationFrame(() => panel.classList.add("panel-open"));
-  })
-
-  const btn = sidebar.querySelector(`.wii-system-button[data-project="${projectId}"]`)
-  if (btn) btn.classList.add("active");
-
-  panel.querySelector(".panel-close").addEventListener("click", () => {
-    togglePanel(sidebar, projectId);
   });
+
+  sidebar.querySelector(`.wii-system-button[data-project="${projectId}"]`)?.classList.add("active");
+
+  panel.querySelector(".panel-close").addEventListener("click", () => togglePanel(sidebar, projectId));
 }
 
 function init() {
   document.querySelectorAll(".wii-system-button[data-project]").forEach(btn => {
-    btn.addEventListener("click", () => {
-      const sidebar = btn.closest(".sidebar");
-      const projectId = btn.dataset.project;
-      togglePanel(sidebar, projectId)
-    })
-  })
+    btn.addEventListener("click", () => togglePanel(btn.closest(".sidebar"), btn.dataset.project));
+  });
 
   initLightbox();
   initHobbyGallery();
+  initSparkleTrail();
+}
+
+/* -------------------------------- */
+/* ---------- 2000s Extras --------- */
+/* -------------------------------- */
+
+function initSparkleTrail() {
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const touchOnly = window.matchMedia("(pointer: coarse)").matches;
+  if (reduceMotion || touchOnly) return;
+
+  const colors = ["#4dffc2", "#5fd0f0", "#ff7ac0", "#ffe066", "#ffffff"];
+  let lastSpawn = 0;
+
+  document.addEventListener("mousemove", (e) => {
+    const now = performance.now();
+    if (now - lastSpawn < 40) return;
+    lastSpawn = now;
+
+    const sparkle = document.createElement("span");
+    sparkle.className = "sparkle";
+    sparkle.textContent = "✦";
+    sparkle.style.left = `${e.clientX}px`;
+    sparkle.style.top = `${e.clientY}px`;
+    sparkle.style.color = colors[Math.floor(Math.random() * colors.length)];
+    document.body.appendChild(sparkle);
+    sparkle.addEventListener("animationend", () => sparkle.remove());
+  });
 }
 
 /* -------------------------------- */
@@ -158,11 +181,11 @@ function closeLightbox() {
 /* ------------ Carousel ----------- */
 /* -------------------------------- */
 
-function createCarousel(root, { autoRotate = false, intervalMs = 4000 } = {}) {
+function createCarousel(root, { autoRotate = false, intervalMs = 10000 } = {}) {
   const track = root.querySelector(".gallery-track");
   const slides = root.querySelectorAll(".gallery-slide");
   const dots = root.querySelectorAll(".gallery-dot");
-  if (!track || !slides.length) return { stop() {} };
+  if (!track || !slides.length) return { stop() { } };
 
   let current = 0;
   let timer = null;
@@ -228,13 +251,11 @@ function createCarousel(root, { autoRotate = false, intervalMs = 4000 } = {}) {
 const hobbyCategories = {
   "gaming": {
     title: "Gaming",
-    type: "placeholder",
-    message: "Nothing posted yet — check back soon.",
+    type: "playlists",
   },
   "video-editing": {
     title: "Video Editing",
-    type: "placeholder",
-    message: "Nothing posted yet — check back soon.",
+    type: "videos",
   },
   "blender": {
     title: "Blender",
@@ -284,8 +305,8 @@ function buildGalleryInner(images) {
 
   const dots = images.length > 1
     ? `<div class="gallery-dots">${images
-        .map((_, i) => `<button type="button" class="gallery-dot${i === 0 ? " active" : ""}" data-slide="${i}" aria-label="Show slide ${i + 1}"></button>`)
-        .join("")}</div>`
+      .map((_, i) => `<button type="button" class="gallery-dot${i === 0 ? " active" : ""}" data-slide="${i}" aria-label="Show slide ${i + 1}"></button>`)
+      .join("")}</div>`
     : "";
 
   return `<div class="gallery-track">${slides}${arrows}</div>${dots}`;
@@ -298,6 +319,77 @@ function buildCategoryBar(title) {
       <button type="button" class="gallery-back" id="gallery-back-btn">&#10005; Back to Gallery</button>
     </div>
   `;
+}
+
+const youtubeChannelUrl = "https://www.youtube.com/@yinlin9811";
+
+// videos.json and playlists.json are refreshed by the
+// "Update YouTube videos and playlists" GitHub Action
+async function loadYouTubeCards(container, file, buildCard) {
+  try {
+    const res = await fetch(file, { cache: "no-cache" });
+    if (!res.ok) throw new Error(res.status);
+    const items = await res.json();
+    container.replaceChildren(...items.map(buildCard));
+  } catch {
+    container.innerHTML = buildPlaceholderMarkup("Couldn't load videos right now.");
+  }
+
+  const more = document.createElement("a");
+  more.className = "link video-more";
+  more.href = youtubeChannelUrl;
+  more.target = "_blank";
+  more.rel = "noopener noreferrer";
+  more.textContent = "▶ See all videos on YouTube";
+  container.after(more);
+}
+
+// Built with DOM methods (not innerHTML) since titles come from YouTube
+function buildYouTubeCard({ url, thumbnail, title, subtitle }) {
+  const card = document.createElement("a");
+  card.className = "video-card";
+  card.href = url;
+  card.target = "_blank";
+  card.rel = "noopener noreferrer";
+
+  const thumb = document.createElement("span");
+  thumb.className = "video-thumb";
+  const img = document.createElement("img");
+  img.src = thumbnail;
+  img.alt = "";
+  img.loading = "lazy";
+  const play = document.createElement("span");
+  play.className = "video-play";
+  play.setAttribute("aria-hidden", "true");
+  play.textContent = "▶";
+  thumb.append(img, play);
+
+  const titleEl = document.createElement("span");
+  titleEl.className = "video-title";
+  titleEl.textContent = title;
+
+  const subtitleEl = document.createElement("span");
+  subtitleEl.className = "video-date";
+  subtitleEl.textContent = subtitle;
+
+  card.append(thumb, titleEl, subtitleEl);
+  return card;
+}
+
+function buildVideoCard(video) {
+  return buildYouTubeCard({
+    ...video,
+    subtitle: new Date(video.published).toLocaleDateString(undefined, {
+      year: "numeric", month: "short", day: "numeric",
+    }),
+  });
+}
+
+function buildPlaylistCard(playlist) {
+  const count = `${playlist.count}${playlist.countIsCapped ? "+" : ""}`;
+  const card = buildYouTubeCard({ ...playlist, subtitle: `☰ Playlist · ${count} videos` });
+  card.classList.add("playlist-card");
+  return card;
 }
 
 function buildPlaceholderMarkup(message) {
@@ -376,12 +468,12 @@ function wirePlayer(root) {
       item.classList.toggle("active", i === trackIndex);
     });
 
-    if (wasPlaying) audio.play().catch(() => {});
+    if (wasPlaying) audio.play().catch(() => { });
   }
 
   playBtn.addEventListener("click", () => {
     if (audio.paused) {
-      audio.play().catch(() => {});
+      audio.play().catch(() => { });
     } else {
       audio.pause();
     }
@@ -467,13 +559,21 @@ function initHobbyGallery() {
     if (cat.type === "gallery") {
       galleryEl.innerHTML = buildCategoryBar(cat.title) + buildGalleryInner(cat.images);
       activeHandle = createCarousel(galleryEl, { autoRotate: false });
+    } else if (cat.type === "videos") {
+      galleryEl.innerHTML = buildCategoryBar(cat.title) + `<div class="video-list">${buildPlaceholderMarkup("Loading videos...")}</div>`;
+      loadYouTubeCards(galleryEl.querySelector(".video-list"), "videos.json", buildVideoCard);
+      activeHandle = { stop() { } };
+    } else if (cat.type === "playlists") {
+      galleryEl.innerHTML = buildCategoryBar(cat.title) + `<div class="video-list">${buildPlaceholderMarkup("Loading playlists...")}</div>`;
+      loadYouTubeCards(galleryEl.querySelector(".video-list"), "playlists.json", buildPlaylistCard);
+      activeHandle = { stop() { } };
     } else if (cat.type === "player") {
       galleryEl.innerHTML = buildCategoryBar(cat.title) + buildPlayerMarkup();
       wirePlayer(galleryEl);
-      activeHandle = { stop() {} };
+      activeHandle = { stop() { } };
     } else {
       galleryEl.innerHTML = buildCategoryBar(cat.title) + buildPlaceholderMarkup(cat.message);
-      activeHandle = { stop() {} };
+      activeHandle = { stop() { } };
     }
 
     galleryEl.querySelector("#gallery-back-btn")?.addEventListener("click", showDefaultGallery);
@@ -496,4 +596,4 @@ function initHobbyGallery() {
   });
 }
 
-document.addEventListener("DOMContentLoaded", init)
+document.addEventListener("DOMContentLoaded", init);

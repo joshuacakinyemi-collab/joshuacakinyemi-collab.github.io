@@ -9,9 +9,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Rajdhani:wght@400;500;600;700&family=VT323&display=swap"
     rel="stylesheet">
-  <script src="Project.js"></script>
+  <script src="Project.js" defer></script>
 </head>
 
 <body>
@@ -24,6 +24,7 @@
       <a class="goto" href="#contact">CONTACT</a>
     </nav>
   </header>
+
 
   <main>
 
@@ -53,7 +54,8 @@
         <div class="gallery-track">
           <img class="gallery-slide active" src="gallery/finalCD.png" alt="3D render of Sonic the Hedgehog in a desert">
           <img class="gallery-slide" src="gallery/Sonicmem.png" alt="Sonic the Hedgehog CD cover art collage">
-          <img class="gallery-slide" src="gallery/SA_Frutiger_Final.webp" alt="Sonic Adventure style render, Frutiger Aero edit">
+          <img class="gallery-slide" src="gallery/SA_Frutiger_Final.webp"
+            alt="Sonic Adventure style render, Frutiger Aero edit">
           <img class="gallery-slide" src="gallery/Mania.webp" alt="Sonic Mania style render with geometric background">
           <button type="button" class="gallery-arrow gallery-prev" aria-label="Previous image">&#10094;</button>
           <button type="button" class="gallery-arrow gallery-next" aria-label="Next image">&#10095;</button>
@@ -73,7 +75,7 @@
         <a href="#0" data-hobby="blender">Blender</a>
         <a href="#0" data-hobby="coding">Coding</a>
         <a href="#0" data-hobby="art">Art</a>
-        <a href="#0" data-hobby="music">Music (eventually)</a>
+        <a href="#0" data-hobby="music">Music</a>
       </nav>
     </section>
 
@@ -103,7 +105,7 @@
               alt="YoshiyaTunes" title="YoshiyaTunes">
             <span class="wii-label">YoshiyaTunes</span>
           </div>
-          <div class="wii-item">
+          <div class="wii-item is-new">
             <img class="wii-system-button" data-project="virtual-launcher" src="img/VirtualLauncher.png"
               alt="Virtual Launcher" title="Virtual Launcher">
             <span class="wii-label">Virtual Launcher</span>
@@ -111,9 +113,9 @@
         </div>
       </div>
 
-
       <!-- Planned Projects -->
       <div class="sidebar">
+        <div class="construction"><span>&#9888; UNDER CONSTRUCTION &#9888;</span></div>
         <h3>Planned Projects</h3>
         <div class="wii-buttons">
           <div class="wii-item">
@@ -130,7 +132,6 @@
       </div>
     </section>
 
-
     <section id="contact">
       <form action="https://formspree.io/f/xwvozlgz" method="POST">
         <h2>
@@ -141,7 +142,7 @@
             <button type="button" class="close" tabindex="-1">&#10005;</button>
           </span>
         </h2>
-        <h3>Wanna make something fun? Let's connect.</h3>
+        <h3>Sign my guestbook! Wanna make something fun? Let's connect.</h3>
 
         <div id="contact-grid">
           <div id="namemail">
@@ -150,13 +151,13 @@
               <input type="text" id="name" name="name" placeholder="Enter Name" required />
             </div>
             <div id="email-field">
-              <label for="email">EMAIL:</label>
+              <label for="email">EMAIL</label>
               <input type="email" id="email" name="email" placeholder="Enter Email" required />
             </div>
           </div>
 
           <div id="space">
-            <label for="message">MESSAGE:</label>
+            <label for="message">MESSAGE</label>
             <textarea name="message" id="message" rows="5" cols="35"
               placeholder="Got anything to say to me."></textarea>
           </div>
