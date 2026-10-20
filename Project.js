@@ -38,9 +38,9 @@ const projects = {
     ],
   },
   "Digital Arcade": {
-    title: "The Totally retro arcade",
+    title: "The Totally Retro Arcade",
     img: "img/digital-arcade.png",
-    description: "A collection of arcade game, recreated in JavaScript.",
+    description: "A collection of arcade games, recreated in JavaScript.",
     tech: "HTML, CSS, JS",
     links: [
       { label: "Github", href: "https://github.com/joshuacakinyemi-collab/Arcade" },
@@ -58,7 +58,6 @@ const projects = {
     ],
   },
 };
-
 
 function buildPanel(id) {
   const p = projects[id];
@@ -86,48 +85,86 @@ function buildPanel(id) {
   return panel;
 }
 
+function closePanel(panel) {
+  panel.classList.remove("panel-open");
+  panel.addEventListener("transitionend", () => panel.remove(), { once: true });
+}
+
 function togglePanel(sidebar, projectId) {
   const existing = sidebar.querySelector(".project-panel");
+  const isOpenAlready = existing?.dataset.panelFor === projectId && existing.classList.contains("panel-open");
 
-  if (existing && existing.dataset.panelFor === projectId) {
-    existing.classList.remove("panel-open");
-    existing.addEventListener("transitionend", () => existing.remove(), { once: true });
+  sidebar.querySelectorAll(".wii-system-button.active").forEach(b => b.classList.remove("active"));
 
-    const btn = sidebar.querySelector(`.wii-system-button[data-project="${projectId}"]`);
-    if (btn) btn.classList.remove("active");
+  if (isOpenAlready) {
+    closePanel(existing);
     return;
   }
 
-  if (existing) {
-    existing.remove();
-    sidebar.querySelectorAll(".wii-system-button.active").forEach(b => b.classList.remove("active"));
-  }
+  existing?.remove();
 
   const panel = buildPanel(projectId);
   if (!panel) return;
 
   sidebar.appendChild(panel);
-
+  // Wait two frames so the browser paints the closed state before animating open
   requestAnimationFrame(() => {
     requestAnimationFrame(() => panel.classList.add("panel-open"));
-  })
-
-  const btn = sidebar.querySelector(`.wii-system-button[data-project="${projectId}"]`)
-  if (btn) btn.classList.add("active");
-
-  panel.querySelector(".panel-close").addEventListener("click", () => {
-    togglePanel(sidebar, projectId);
   });
+
+  sidebar.querySelector(`.wii-system-button[data-project="${projectId}"]`)?.classList.add("active");
+
+  panel.querySelector(".panel-close").addEventListener("click", () => togglePanel(sidebar, projectId));
 }
 
 function init() {
   document.querySelectorAll(".wii-system-button[data-project]").forEach(btn => {
-    btn.addEventListener("click", () => {
-      const sidebar = btn.closest(".sidebar");
-      const projectId = btn.dataset.project;
-      togglePanel(sidebar, projectId)
-    })
-  })
+    btn.addEventListener("click", () => togglePanel(btn.closest(".sidebar"), btn.dataset.project));
+  });
+
+  const funLink = document.getElementById("fun-portfolio");
+  const funModal = document.getElementById("fun-portfolio-modal");
+  const funModalCancel = document.getElementById("fun-modal-cancel");
+  const funModalConfirm = document.getElementById("fun-modal-confirm");
+
+  if (funLink && funModal) {
+    const openModal = () => {
+      funModal.hidden = false;
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          funModal.classList.add("modal-open");
+          funModalCancel.focus();
+        });
+      });
+    };
+
+    const closeModal = () => {
+      funModal.classList.remove("modal-open");
+      funModal.addEventListener("transitionend", () => {
+        funModal.hidden = true;
+      }, { once: true });
+    };
+
+    funLink.addEventListener("click", (e) => {
+      e.preventDefault();
+      openModal();
+    });
+
+    funModalCancel.addEventListener("click", closeModal);
+
+    funModalConfirm.addEventListener("click", () => {
+      closeModal();
+      window.open(funLink.href, funLink.target || "_self", "noopener,noreferrer");
+    });
+
+    funModal.addEventListener("click", (e) => {
+      if (e.target === funModal) closeModal();
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && !funModal.hidden) closeModal();
+    });
+  }
 }
 
-document.addEventListener("DOMContentLoaded", init)
+document.addEventListener("DOMContentLoaded", init);
