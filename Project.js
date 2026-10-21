@@ -73,7 +73,7 @@ function buildPanel(id) {
 
   panel.innerHTML = `
     <button class="panel-close" aria-label="Close panel">✕</button>
-    <img src="${p.img}" alt="${p.title}" class="panel-img">
+    <img src="${p.img}" alt="${p.title}" class="panel-img" decoding="async">
     <div class="panel-info">
       <h4 class="panel-title">${p.title}</h4>
       <p class="panel-desc">${p.description}</p>
