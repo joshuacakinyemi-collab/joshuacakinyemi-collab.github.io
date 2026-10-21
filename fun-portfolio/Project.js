@@ -1,25 +1,25 @@
 const projects = {
   "portfolio": {
     title: "Personal Portfolio",
-    img: "img/Background.png",
+    img: "img/Background-icon.webp",
     description: "My own portfolio that states who I am and lists my projects.",
     tech: "HTML5, CSS, JavaScript, Formspree",
     links: [
       { label: "Github", href: "https://github.com/joshuacakinyemi-collab/joshuacakinyemi-collab.github.io" },
     ],
   },
-  "yoshiyatunes": {
-    title: "YoshiyaTunes",
-    img: "https://d1nhio0ox7pgb.cloudfront.net/_img/o_collection_png/green_dark_grey/256x256/plain/cd.png",
-    description: "A place to create personalized playlists with music that you can share with other users.",
-    tech: "JavaScript, CSS, HTML",
+  "playlist-maker": {
+    title: "Music Playlist Maker — Desktop App",
+    img: "img/playlist-maker.webp",
+    description: "A locally-run desktop app for creating and managing music playlists with YouTube search, playback controls, and shareable playlist codes — no server required.",
+    tech: "Electron, React, Vite, electron-store",
     links: [
-      { label: "Github", href: "https://github.com/joshuacakinyemi-collab/playlistMaker/tree/main" },
+      { label: "Github", href: "https://github.com/joshuacakinyemi-collab/Music-Playlist-Maker-Desktop-Application" },
     ],
   },
   "virtual-launcher": {
     title: "Virtual Launcher",
-    img: "img/VirtualLauncher.png",
+    img: "img/VirtualLauncher.webp",
     description: "A console-style game launcher that skins your desktop apps and games as a big-screen, controller-operable dashboard.",
     tech: "Electron, JavaScript, HTML, CSS",
     links: [
@@ -28,14 +28,14 @@ const projects = {
   },
   "sonic": {
     title: "Sonic the Hedgehog Fangame",
-    img: "img/Sonicmem.png",
+    img: "img/Sonicmem.webp",
     description: "A 3D Sonic fangame utilizing gameplay from the three main game eras.",
     tech: "C++, Unreal Engine",
     links: [],
   },
   "twewy": {
     title: "The World Ends With You: Neo Remix",
-    img: "img/twewyneo.png",
+    img: "img/twewyneo.webp",
     description: "A remake of the 2007 game, recreated in 3D.",
     tech: "C++, Unreal Engine",
     links: [],
@@ -56,7 +56,7 @@ function buildPanel(id) {
 
   panel.innerHTML = `
     <button class="panel-close" aria-label="Close panel">✕</button>
-    <img src="${p.img}" alt="${p.title}" class="panel-img">
+    <img src="${p.img}" alt="${p.title}" class="panel-img" decoding="async">
     <div class="panel-info">
       <h4 class="panel-title">${p.title}</h4>
       <p class="panel-desc">${p.description}</p>
@@ -185,6 +185,7 @@ function createCarousel(root, { autoRotate = false, intervalMs = 10000 } = {}) {
   const track = root.querySelector(".gallery-track");
   const slides = root.querySelectorAll(".gallery-slide");
   const dots = root.querySelectorAll(".gallery-dot");
+  const caption = root.querySelector(".gallery-caption");
   if (!track || !slides.length) return { stop() { } };
 
   let current = 0;
@@ -196,6 +197,7 @@ function createCarousel(root, { autoRotate = false, intervalMs = 10000 } = {}) {
     current = (index + slides.length) % slides.length;
     slides[current].classList.add("active");
     dots[current]?.classList.add("active");
+    if (caption) caption.textContent = slides[current].dataset.caption;
   }
 
   function startRotation() {
@@ -261,21 +263,33 @@ const hobbyCategories = {
     title: "Blender",
     type: "gallery",
     images: [
-      { src: "gallery/finalCD.png", alt: "3D render of Sonic the Hedgehog in a desert" },
+      { src: "gallery/finalCD.webp", alt: "3D render of Sonic the Hedgehog in a desert" },
       { src: "gallery/SA_Frutiger_Final.webp", alt: "Sonic Adventure style render, Frutiger Aero edit" },
       { src: "gallery/Mania.webp", alt: "Sonic Mania style render with geometric background" },
     ],
   },
   "coding": {
     title: "Coding",
-    type: "placeholder",
-    message: "Nothing posted yet — check back soon.",
+    type: "gallery",
+    wide: true,
+    images: [
+      {
+        src: "gallery/playlist-maker.webp",
+        alt: "Music Playlist Maker app showing a retro terminal-style playlist screen",
+        caption: "Music Playlist Maker",
+      },
+      {
+        src: "gallery/virtual-launcher.webp",
+        alt: "Virtual Launcher dashboard showing game tiles with Persona 3 Reload selected",
+        caption: "Virtual Launcher",
+      },
+    ],
   },
   "art": {
     title: "Art",
     type: "gallery",
     images: [
-      { src: "gallery/Sonicmem.png", alt: "Sonic the Hedgehog CD cover art collage" },
+      { src: "gallery/Sonicmem.webp", alt: "Sonic the Hedgehog CD cover art collage" },
     ],
   },
   "music": {
@@ -293,10 +307,14 @@ const musicTracks = [
   },
 ];
 
-function buildGalleryInner(images) {
+function buildGalleryInner(images, { wide = false } = {}) {
   const slides = images
-    .map((img, i) => `<img class="gallery-slide${i === 0 ? " active" : ""}" src="${img.src}" alt="${img.alt}">`)
+    .map((img, i) => `<img class="gallery-slide${i === 0 ? " active" : ""}" src="${img.src}" alt="${img.alt}" data-caption="${img.caption ?? ""}">`)
     .join("");
+
+  const caption = images.some((img) => img.caption)
+    ? `<p class="gallery-caption">${images[0].caption ?? ""}</p>`
+    : "";
 
   const arrows = images.length > 1
     ? `<button type="button" class="gallery-arrow gallery-prev" aria-label="Previous image">&#10094;</button>
@@ -309,7 +327,7 @@ function buildGalleryInner(images) {
       .join("")}</div>`
     : "";
 
-  return `<div class="gallery-track">${slides}${arrows}</div>${dots}`;
+  return `<div class="gallery-track${wide ? " gallery-track--wide" : ""}">${slides}${arrows}</div>${caption}${dots}`;
 }
 
 function buildCategoryBar(title) {
@@ -557,7 +575,7 @@ function initHobbyGallery() {
     stopPlayer(galleryEl);
 
     if (cat.type === "gallery") {
-      galleryEl.innerHTML = buildCategoryBar(cat.title) + buildGalleryInner(cat.images);
+      galleryEl.innerHTML = buildCategoryBar(cat.title) + buildGalleryInner(cat.images, { wide: cat.wide });
       activeHandle = createCarousel(galleryEl, { autoRotate: false });
     } else if (cat.type === "videos") {
       galleryEl.innerHTML = buildCategoryBar(cat.title) + `<div class="video-list">${buildPlaceholderMarkup("Loading videos...")}</div>`;
